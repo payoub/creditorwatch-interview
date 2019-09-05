@@ -26,3 +26,5 @@ To launch the project run the following from the root directory:
 ```
 docker-compose -f .docker/docker-compose.yml up
 ```
+
+The project will then be served at http://localhost:8080
