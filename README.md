@@ -24,7 +24,7 @@ This project uses docker and all configuration is stored in the .docker director
 To launch the project run the following from the root directory:
 
 ```
-docker-compose -f .docker/docker-compose.yml up
+docker-compose up
 ```
 
 The project will then be served at http://localhost:8080
