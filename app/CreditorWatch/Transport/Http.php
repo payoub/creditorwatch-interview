@@ -6,7 +6,6 @@ class Http implements TransportInterface {
 
 	protected $request;
 	protected $response;
-	protected $responseCode;
 
 	public function sendRequest($request) {
 		$this->request = $request;
@@ -15,8 +14,9 @@ class Http implements TransportInterface {
 
 		curl_setopt_array($ch, $request->getRequestData());
 
-		$this->response = curl_exec($ch);
-		$this->responseCode = curl_getinfo($ch, CURLINFO_RESPONSE_CODE);
+		$responseData = curl_exec($ch);
+		$responseCode = curl_getinfo($ch, CURLINFO_RESPONSE_CODE);
+		$this->response = new \CreditorWatch\Transport\Response\HttpResponse($responseCode, $responseData);
 
 		curl_close($ch);
 
@@ -27,9 +27,4 @@ class Http implements TransportInterface {
 		return $this->response;
 	}
 
-	public function getResponseCode(){
-		return $this->responseCode;
-
-	}
-	
 }

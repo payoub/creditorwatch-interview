@@ -14,9 +14,9 @@ class HttpTest extends \tests\TestCase {
 		$class = new \CreditorWatch\Transport\Http();
 		$class->sendRequest($request);
 
-		assert($class->getResponseCode() == 200);
-		assert(is_string($class->getResponse()));
-		assert(strlen($class->getResponse()) > 0);
+		assert($class->getResponse()->getResponseCode() == 200);
+		assert(is_a($class->getResponse(),"\CreditorWatch\Transport\Response\HttpResponse"));
+		assert(strlen($class->getResponse()->getResponseData()) > 0);
 
 	}
 
@@ -28,7 +28,7 @@ class HttpTest extends \tests\TestCase {
 		$class = new \CreditorWatch\Transport\Http();
 		$class->sendRequest($request);
 
-		assert($class->getResponseCode() == 400);
+		assert($class->getResponse()->getResponseCode() == 400);
 
 	}
 
@@ -43,13 +43,13 @@ class HttpTest extends \tests\TestCase {
 		$class = new \CreditorWatch\Transport\Http();
 		$class->sendRequest($request);
 
-		$response = json_decode($class->getResponse());
+		$response = json_decode($class->getResponse()->getResponseData());
 		$responseParams = (array) $response->args;
 
 		//Test for equality, order doesn't matter
 		//See https://www.php.net/manual/en/language.operators.array.php
 		assert($params == $responseParams); 
-		assert($class->getResponseCode() == 200);
+		assert($class->getResponse()->getResponseCode() == 200);
 
 	}
 
