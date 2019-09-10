@@ -1,8 +1,8 @@
 <?php
 
-namespace CreditorWatch\Transport;
+namespace CreditorWatch\Transport\Request;
 
-class HttpRequest {
+class HttpRequest implements RequestInterface {
 
 	protected $endpoint;
 	protected $method = 'GET';
@@ -39,7 +39,7 @@ class HttpRequest {
 		return $this;
 	}
 
-	public function getRequestAsCurlOptions(){
+	public function getRequestData(){
 		$queryString = http_build_query($this->queryParams);
 
 		$endpoint = (strlen($queryString) > 0) ? $this->endpoint."?".$queryString : $this->endpoint; 

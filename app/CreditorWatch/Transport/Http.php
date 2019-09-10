@@ -13,7 +13,7 @@ class Http implements TransportInterface {
 
 		$ch = curl_init();
 
-		curl_setopt_array($ch, $request->getRequestAsCurlOptions());
+		curl_setopt_array($ch, $request->getRequestData());
 
 		$this->response = curl_exec($ch);
 		$this->responseCode = curl_getinfo($ch, CURLINFO_RESPONSE_CODE);

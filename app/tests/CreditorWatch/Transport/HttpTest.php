@@ -8,7 +8,7 @@ class HttpTest extends \tests\TestCase {
 
 	public function basicRequestTest(){
 
-		$request = new \CreditorWatch\Transport\HttpRequest();
+		$request = new \CreditorWatch\Transport\Request\HttpRequest();
 		$request->setUrlEndpoint("https://www.httpbin.org/get");
 
 		$class = new \CreditorWatch\Transport\Http();
@@ -22,7 +22,7 @@ class HttpTest extends \tests\TestCase {
 
 	public function statusCodeTest(){
 
-		$request = new \CreditorWatch\Transport\HttpRequest();
+		$request = new \CreditorWatch\Transport\Request\HttpRequest();
 		$request->setUrlEndpoint("http://www.httpbin.org/status/400");
 
 		$class = new \CreditorWatch\Transport\Http();
@@ -36,7 +36,7 @@ class HttpTest extends \tests\TestCase {
 
 		$params = ["key" => "value"];
 
-		$request = new \CreditorWatch\Transport\HttpRequest();
+		$request = new \CreditorWatch\Transport\Request\HttpRequest();
 		$request->setUrlEndpoint("http://www.httpbin.org/anything/{anything}")
 				->setQueryParams($params);
 
