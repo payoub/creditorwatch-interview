@@ -19,7 +19,7 @@
 
 ## Running the project
 
-This project uses docker and all configuration is stored in the .docker directory.
+This project uses docker and all configuration is stored in the docker directory.
 
 To launch the project run the following from the root directory:
 
@@ -28,3 +28,11 @@ docker-compose up
 ```
 
 The project will then be served at http://localhost:8080
+
+## Testing the project
+
+Tests are located in the tests directory and can be run using the following:
+
+```
+docker-compose exec php sh -c "cd /var/www/html/tests/ && php run.php"
+```
