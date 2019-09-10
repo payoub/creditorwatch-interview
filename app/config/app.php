@@ -3,7 +3,7 @@
 $config = [];
 
 $config['log'] = [
-	'logType' => 'File'
+	'logType' => 'CreditorWatch\Log\File'
 	, 'logPath' => APP_ROOT.DIRECTORY_SEPARATOR.'logs' 
 ];
 
