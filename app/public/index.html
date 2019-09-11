@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>SEO Analyser - CreditorWatch</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="assets/img/favicon.ico" rel="shortcut icon"/>
+		<link href="assets/css/style.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+		<div class="header">
+			<img src="assets/img/asset-cw-logo-standard.svg"/>
+		</div>
+        <div class="content">
+			<h1>SEO Analytics</h1>
+			<p>This tool allows you to determine the current ranking of your url based on keywords given to a search engine.</p>
+			<form action="api.php" autocomplete="off" method="GET">
+				<input name="keywords" required type="text" placeholder="Search Keywords"/>
+				<input name="target" required type="url" placeholder="Target Url"/>
+				<button type="submit" value="Submit">&#x1F50D;</button>
+			</form>
+			<p class="help">*Both fields are required and target url must include the http:// schema.</p>
+			<div class="results"></div>
+		</div>
+		<div class="footer">
+			<p>Created by a potential employee</p>	
+		</div>
+    </body>
+</html>
