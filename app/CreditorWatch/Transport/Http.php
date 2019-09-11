@@ -2,12 +2,15 @@
 
 namespace CreditorWatch\Transport;
 
+use CreditorWatch\System\App;
+
 class Http implements TransportInterface {
 
 	protected $request;
 	protected $response;
 
 	public static function makeRequest($requestData) {
+		App::getInstance()->getLog()->debug("Making http request");
 		$request = new \CreditorWatch\Transport\Request\HttpRequest();
 		$request->setRequestData($requestData);
 		return $request;
@@ -17,6 +20,8 @@ class Http implements TransportInterface {
 		$this->request = $request;
 
 		$ch = curl_init();
+
+		App::getInstance()->getLog()->debug("Sending http request. ".var_export($request->getRequestData(), true));
 
 		curl_setopt_array($ch, $request->getRequestData());
 

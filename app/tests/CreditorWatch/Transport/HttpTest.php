@@ -53,6 +53,26 @@ class HttpTest extends \tests\TestCase {
 
 	}
 
+	public function makeRequestTest(){
 
+		$requestData = [
+			'endpoint' => 'http://test.endpoint.com/v1',
+			'method' => 'GET',
+			'queryParams' => [
+				'q' => 'creditor watch' 
+				, 'start' => 1 
+				, 'key' => 'TEST' 
+				, 'cx' => 'TEST' 
+			]  
+		];
 
+		$class = new \CreditorWatch\Transport\Http();
+		$request = $class::makeRequest($requestData);
+
+		$queryString = http_build_query($requestData['queryParams']);
+		$expected = sprintf("%s?%s",$requestData['endpoint'],$queryString);
+		$options = $request->getRequestData();
+
+		assert($options[CURLOPT_URL] === $expected);
+	}
 }
