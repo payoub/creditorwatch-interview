@@ -19,4 +19,8 @@ class HttpResponse implements ResponseInterface {
 	public function getResponseCode(){
 		return $this->responseCode;
 	}
+
+	public function isSuccess(){
+		return $this->getResponseCode() == 200;
+	}
 }

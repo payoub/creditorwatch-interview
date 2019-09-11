@@ -9,6 +9,12 @@ class HttpRequest implements RequestInterface {
 	protected $queryParams = array();
 	protected $postFields = array();
 
+	public function setRequestData($requestData = null) {
+		foreach($requestData as $key => $value){
+			$this->$key = $value;	
+		}
+		return $this;
+	}
 
 	public function setUrlEndpoint($url){
 		$this->endpoint = $url;
