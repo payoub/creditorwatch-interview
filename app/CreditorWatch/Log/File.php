@@ -5,7 +5,7 @@ namespace CreditorWatch\Log;
 /**
  * Writes log messages to a file.
  */
-class File {
+class File extends AbstractLog {
 
 	protected $logPath;
 	protected $logName = 'app.log';
