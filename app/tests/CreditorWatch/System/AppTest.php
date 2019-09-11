@@ -15,14 +15,14 @@ class AppTest extends \tests\TestCase {
 
 	public function getAllConfigTest(){
 		$app = \CreditorWatch\System\App::getInstance();
-		$config = $app->config();
+		$config = $app->getConfig();
 		assert(is_array($config));
 		assert(!empty($config));
 	}
 
 	public function getLogConfigTest(){
 		$app = \CreditorWatch\System\App::getInstance();
-		$config = $app->config('log');
+		$config = $app->getConfig('log');
 		assert(is_array($config));
 		assert(!empty($config));
 		assert(isset($config['logType']));
@@ -30,8 +30,8 @@ class AppTest extends \tests\TestCase {
 
 	public function getAppLoggerTest(){
 		$app = \CreditorWatch\System\App::getInstance();
-		$logType = $app->config('log')['logType'];
-		assert(is_a($app->log(), $logType));
+		$logType = $app->getConfig('log')['logType'];
+		assert(is_a($app->getLog(), $logType));
 		
 	}
 

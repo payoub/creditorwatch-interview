@@ -17,6 +17,10 @@ final class App {
 
 	}
 
+	/**
+	 * Returns the application instance 
+	 * @return \CreditorWatch\System\App
+	 */
 	public static function getInstance(){
 		if(is_null(self::$instance)){
 			$config = include APP_ROOT.DIRECTORY_SEPARATOR."config".DIRECTORY_SEPARATOR."app.php";
@@ -25,11 +29,15 @@ final class App {
 		return self::$instance;
 	}
 
-	public function log(){
+	/**
+	 * Returns the logging class 
+	 * @return \CreditorWatch\Log\AbstractLog
+	 */
+	public function getLog(){
 		return $this->log;
 	}
 
-	public function config($key = null){
+	public function getConfig($key = null){
 		if(is_null($key)){
 			return $this->config;
 		}
