@@ -65,14 +65,54 @@ form button[type="submit"] {
 	height: 32px;
 }
 
-.results {
+#results {
 	margin-top: 1rem;
 	border-top: 2px solid #f8f8f8;
 	display: none;
+}
+
+#results::before {
+	content: "Results";
 }
 
 .help {
 	font-style: italic;
 	font-size: .6rem;
 	text-align: center;
+}
+
+.error {
+	border-radius: .25rem;
+	background-color: #f5d3d3;
+	padding: .5rem;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  margin: 100px auto;
+  background-color: #333;
+
+  border-radius: 100%;  
+  -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
+  animation: sk-scaleout 1.0s infinite ease-in-out;
+}
+
+@-webkit-keyframes sk-scaleout {
+  0% { -webkit-transform: scale(0) }
+  100% {
+    -webkit-transform: scale(1.0);
+    opacity: 0;
+  }
+}
+
+@keyframes sk-scaleout {
+  0% { 
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  } 100% {
+    -webkit-transform: scale(1.0);
+    transform: scale(1.0);
+    opacity: 0;
+  }
 }
