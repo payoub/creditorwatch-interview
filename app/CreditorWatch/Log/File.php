@@ -56,7 +56,7 @@ class File extends AbstractLog {
 	protected function write($level, $msg){
 
 		if(is_null($this->fileResource)){
-			$this->fileResource = fopen($this->getLogPath(), 'w');
+			$this->fileResource = fopen($this->getLogPath(), 'a');
 		}
 
 		$msg = sprintf($this->logFormat, date('r'), $level, $msg);
