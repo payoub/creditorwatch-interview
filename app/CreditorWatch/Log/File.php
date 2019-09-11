@@ -9,7 +9,7 @@ class File extends AbstractLog {
 
 	protected $logPath;
 	protected $logName = 'app.log';
-	protected $logFormat = "[%s] %s: %s\n";
+	protected $logFormat = "%s [%s] %s(): %s\n";
 	protected $fileResource;
 
 	/**
@@ -59,7 +59,9 @@ class File extends AbstractLog {
 			$this->fileResource = fopen($this->getLogPath(), 'a');
 		}
 
-		$msg = sprintf($this->logFormat, date('r'), $level, $msg);
+		$backtrace = debug_backtrace();
+
+		$msg = sprintf($this->logFormat, $level,  date('r'), $backtrace[2]['function'], $msg);
 		
 		fwrite($this->fileResource, $msg);
 	}
