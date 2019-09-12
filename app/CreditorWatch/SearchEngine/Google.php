@@ -78,5 +78,8 @@ class Google extends AbstractSearchEngine {
 		return $this;
 	}
 
+	public function getPageIndex(){
+		return $this->pageIndex;
+	}
 
 }
