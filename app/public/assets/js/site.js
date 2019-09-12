@@ -11,11 +11,15 @@ var xhr = new XMLHttpRequest();
 xhr.onreadystatechange = function() { // Call a function when the state changes.
     if (this.readyState === XMLHttpRequest.DONE) {
 		try{
+			var response = JSON.parse(this.responseText);
 			if(this.status === 200){
-				var response = JSON.parse(this.responseText);
 				document.getElementById('results').innerHTML = response.html; 
 			} else {
-				throw this.responseText;
+				var msg = response.html;
+				if(typeof msg == 'undefined'){
+					msg = this.responseText;
+				}
+				throw {message: msg};
 			}
 		} catch(e) {
 			var errorMsg = "<p class='error'>There was an error with the request. Got status "+this.status+".</p>";
